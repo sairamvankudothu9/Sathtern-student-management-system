@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <h1>Student Management System</h1>
+        <p>Manage student records easily</p>
+    </div>
+</header>
+
+<main class="container">
+    <section class="dashboard">
+        <div class="top-bar">
+            <div>
+                <h2>Student Records</h2>
+                <p>View and manage all students</p>
+            </div>
+            <button class="add-btn" onclick="openAddForm()">+ Add Student</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search by ID, name, email or course...">
+            <button onclick="searchStudents()">Search</button>
+            <button class="clear-btn" onclick="clearSearch()">Clear</button>
+        </div>
+
+        <div id="message"></div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Student ID</th><th>Name</th><th>Email</th>
+                        <th>Phone</th><th>Course</th><th>Year</th><th>Address</th><th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTable"></tbody>
+            </table>
+        </div>
+
+        <div id="emptyMessage" class="empty-message">No students found.</div>
+    </section>
+</main>
+
+<div class="modal" id="studentModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="formTitle">Add Student</h2>
+            <button class="close-btn" onclick="closeForm()">&times;</button>
+        </div>
+
+        <form id="studentForm">
+            <input type="hidden" id="studentDatabaseId">
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Student ID *</label>
+                    <input type="text" id="studentId" required placeholder="Example: STU001">
+                </div>
+                <div class="form-group">
+                    <label>Student Name *</label>
+                    <input type="text" id="studentName" required placeholder="Enter student name">
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" id="studentEmail" required placeholder="student@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="studentPhone" placeholder="Phone number">
+                </div>
+                <div class="form-group">
+                    <label>Course *</label>
+                    <select id="studentCourse" required>
+                        <option value="">Select Course</option>
+                        <option value="MCA">MCA</option>
+                        <option value="MBA">MBA</option>
+                        <option value="BCA">BCA</option>
+                        <option value="B.Tech">B.Tech</option>
+                        <option value="M.Tech">M.Tech</option>
+                        <option value="B.Sc">B.Sc</option>
+                        <option value="M.Sc">M.Sc</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Year *</label>
+                    <select id="studentYear" required>
+                        <option value="">Select Year</option>
+                        <option value="1">First Year</option>
+                        <option value="2">Second Year</option>
+                        <option value="3">Third Year</option>
+                        <option value="4">Fourth Year</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label>Address</label>
+                    <textarea id="studentAddress" rows="3" placeholder="Enter address"></textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="cancel-btn" onclick="closeForm()">Cancel</button>
+                <button type="submit" class="save-btn">Save Student</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
